@@ -1,0 +1,38 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^mobile/list/([0-9]+)/$ controller/MobileController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^mobile/list/$ controller/MobileController.php?view=all [nc,qsa]
+
+# Inspector map
+RewriteRule ^login controller/InspectorController.php?view=login [nc,qsa]
+RewriteRule ^signup controller/InspectorController.php?view=signup [nc,qsa]
+RewriteRule ^logout controller/InspectorController.php?view=logout [nc,qsa]
+# RewriteRule ^user/list/([0-9]+) controller/InspectorController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^user/list controller/InspectorController.php?view=all [nc,qsa]
+RewriteRule ^user/create controller/InspectorController.php?view=signup [nc,qsa]
+RewriteRule ^user/delete controller/InspectorController.php?view=remove [nc,qsa]
+RewriteRule ^user/update controller/InspectorController.php?view=edit [nc,qsa]
+
+# Lookup map
+RewriteRule ^lookup/list/([0-9]+) controller/LookupController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^lookup/find controller/LookupController.php?view=find [nc,qsa]
+RewriteRule ^lookup/list controller/LookupController.php?view=all [nc,qsa]
+RewriteRule ^lookup/create controller/LookupController.php?view=add [nc,qsa]
+RewriteRule ^lookup/delete controller/LookupController.php?view=remove [nc,qsa]
+RewriteRule ^lookup/update controller/LookupController.php?view=edit [nc,qsa]
+
+# Inspection map
+RewriteRule ^inspection/list/([a-zA-Z0-9-]*) controller/InspectionController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^inspection/list controller/InspectionController.php?view=all [nc,qsa]
+RewriteRule ^inspection/create controller/InspectionController.php?view=add [nc,qsa]
+RewriteRule ^inspection/delete controller/InspectionController.php?view=remove [nc,qsa]
+RewriteRule ^inspection/update controller/InspectionController.php?view=edit [nc,qsa]
+RewriteRule ^inspection/check/([a-zA-Z0-9-]*) controller/InspectionController.php?view=check&id=$1 [nc,qsa]
+
+# Other link map
+# RewriteRule . - [R=404]
+# RewriteRule . / [L,R=301]
+Options -Indexes
